@@ -118,4 +118,131 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', setActiveLink);
     setActiveLink();
+
+    // 6. Dietary Filters Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const menuItems = document.querySelectorAll('.filter-item');
+    let activeFilters = new Set();
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.getAttribute('data-filter');
+            if (activeFilters.has(filter)) {
+                activeFilters.delete(filter);
+                btn.classList.remove('active');
+            } else {
+                activeFilters.add(filter);
+                btn.classList.add('active');
+            }
+            
+            menuItems.forEach(item => {
+                if (activeFilters.size === 0) {
+                    item.classList.remove('hidden-by-filter');
+                    return;
+                }
+                
+                const itemDiet = (item.getAttribute('data-diet') || "").split(',');
+                let match = true;
+                for (let reqFilter of activeFilters) {
+                    if (!itemDiet.includes(reqFilter)) {
+                        match = false;
+                        break;
+                    }
+                }
+                
+                if (match) {
+                    item.classList.remove('hidden-by-filter');
+                } else {
+                    item.classList.add('hidden-by-filter');
+                }
+            });
+        });
+    });
+
+    // 7. Interactive Story Accordion
+    const storyToggles = document.querySelectorAll('.story-toggle');
+    storyToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const parent = toggle.closest('.interactive-story');
+            parent.classList.toggle('expanded');
+        });
+    });
+
+    // 8. Theme Toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+        const toggleTheme = () => {
+            const isLight = document.body.getAttribute('data-theme') === 'light';
+            if (isLight) {
+                document.body.removeAttribute('data-theme');
+                themeBtn.textContent = '☀';
+                localStorage.setItem('aura_theme', 'dark');
+            } else {
+                document.body.setAttribute('data-theme', 'light');
+                themeBtn.textContent = '☾';
+                localStorage.setItem('aura_theme', 'light');
+            }
+        }
+        themeBtn.addEventListener('click', toggleTheme);
+        if (localStorage.getItem('aura_theme') === 'light') {
+            document.body.setAttribute('data-theme', 'light');
+            themeBtn.textContent = '☾';
+        }
+    }
+
+    // 9. Shortlist Logic
+    let shortlist = JSON.parse(localStorage.getItem('aura_shortlist')) || [];
+    const shortlistFab = document.getElementById('shortlist-fab');
+    const shortlistCount = document.getElementById('shortlist-count');
+
+    const updateFab = () => {
+        if (!shortlistFab) return;
+        shortlistCount.textContent = shortlist.length;
+        if (shortlist.length > 0) {
+            shortlistFab.classList.remove('hidden');
+        } else {
+            shortlistFab.classList.add('hidden');
+        }
+        localStorage.setItem('aura_shortlist', JSON.stringify(shortlist));
+    }
+
+    // Inject Shortlist button dynamically
+    const injectShortlistButtons = () => {
+        const targets = document.querySelectorAll('.dish-name, .tasting-wrapper h3, .featured-info h2');
+        targets.forEach(target => {
+            const btn = document.createElement('button');
+            btn.className = 'add-shortlist-btn';
+            btn.innerHTML = '★';
+            btn.title = 'Add to Shortlist';
+            
+            const rawName = target.textContent.trim();
+            if (!rawName) return;
+            
+            // Remove '★' from the rawName if it gets accidentally captured later
+            const dishName = rawName.replace('★', '').trim();
+            
+            if (shortlist.includes(dishName)) {
+                btn.classList.add('saved');
+            }
+
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (shortlist.includes(dishName)) {
+                    shortlist = shortlist.filter(i => i !== dishName);
+                    btn.classList.remove('saved');
+                } else {
+                    shortlist.push(dishName);
+                    btn.classList.add('saved');
+                }
+                updateFab();
+            });
+
+            target.appendChild(btn);
+        });
+    }
+
+    injectShortlistButtons();
+    updateFab();
+
 });
