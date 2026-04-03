@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loader.classList.add('hidden');
         body.classList.remove('loading-state');
 
-    }, 2800); // 2.8s loader
+    }, 3800); // 3.8s loader
 
 
 

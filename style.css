@@ -84,7 +84,52 @@ body.loading-state {
     height: 100%;
     background-color: var(--accent-gold);
     transform: translateY(-100%);
-    animation: drawLine 2s var(--ease-out-expo) forwards 0.5s;
+    animation: drawLine 1.5s var(--ease-out-expo) forwards 0.5s;
+}
+
+.loader-tagline-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    height: 80px;
+}
+
+.loader-tagline {
+    font-family: var(--font-body);
+    color: var(--accent-gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    font-variant: small-caps;
+    /* Hide text sliding out from center */
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.loader-tagline.left span {
+    display: inline-block;
+    transform: translateX(100%);
+    opacity: 0;
+    animation: slideOutLeft 1.5s var(--ease-out-expo) forwards 1.2s;
+}
+
+.loader-tagline.right span {
+    display: inline-block;
+    transform: translateX(-100%);
+    opacity: 0;
+    animation: slideOutRight 1.5s var(--ease-out-expo) forwards 1.2s;
+}
+
+@keyframes slideOutLeft {
+    0% { transform: translateX(100%); opacity: 0; }
+    1% { opacity: 1; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+    0% { transform: translateX(-100%); opacity: 0; }
+    1% { opacity: 1; }
+    100% { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes fadeInLogo {
