@@ -20,11 +20,7 @@ export const RoleLayout: React.FC<RoleLayoutProps> = ({ allowedRole }) => {
 
   return (
     <div className="flex flex-col h-full w-full">
-      {/* Role-specific Navbars can be injected here based on allowedRole */}
-      <header className="py-4 flex justify-between items-center border-b border-gray-200">
-        <h1 className="text-xl font-bold capitalize text-primary">{allowedRole} Dashboard</h1>
-      </header>
-      <div className="flex-1 py-6">
+      <div className="flex-1">
         <Outlet />
       </div>
     </div>

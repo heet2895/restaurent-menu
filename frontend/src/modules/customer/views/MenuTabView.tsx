@@ -31,12 +31,12 @@ export const MenuTabView: React.FC = () => {
       <div className="md:w-64 flex-shrink-0">
         <div className="sticky top-32">
           <h2 className="hidden md:block font-serif text-xl text-primary font-bold mb-6">Menu</h2>
-          <div className="flex md:flex-col overflow-x-auto md:overflow-visible gap-2 md:gap-1 pb-4 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+          <div className="flex flex-nowrap md:flex-col overflow-x-auto md:overflow-visible gap-2 md:gap-1 pb-4 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0 snap-x">
             {mockCategories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`whitespace-nowrap px-4 py-2.5 md:py-3 md:px-5 rounded-full md:rounded-xl text-sm font-medium transition-all text-left
+                className={`whitespace-nowrap snap-center px-4 py-2.5 md:py-3 md:px-5 rounded-full md:rounded-xl text-sm font-medium transition-all text-left shrink-0
                   ${selectedCategory === cat 
                     ? 'bg-primary text-white shadow-md' 
                     : 'bg-white/50 text-gray-600 hover:bg-white hover:text-primary'
@@ -51,7 +51,7 @@ export const MenuTabView: React.FC = () => {
       </div>
 
       {/* Dishes (Right Pane) */}
-      <div className="flex-1" ref={scrollContainerRef}>
+      <div className="flex-1 pb-28" ref={scrollContainerRef}>
         {/* Search Scope Context */}
         {searchQuery && (
           <div className="mb-6 bg-white/60 p-4 rounded-xl border border-gray-100 flex items-center justify-between">

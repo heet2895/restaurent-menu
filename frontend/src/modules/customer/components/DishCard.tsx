@@ -28,7 +28,7 @@ export const DishCard: React.FC<DishCardProps> = ({ dish }) => {
       className="bg-white/80 backdrop-blur-sm border border-white/40 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col"
     >
       {/* Image Section */}
-      <div className="relative h-48 w-full group overflow-hidden cursor-pointer" onClick={handleViewGallery}>
+      <div className="relative aspect-video md:aspect-[4/3] w-full group overflow-hidden cursor-pointer" onClick={handleViewGallery}>
         <img 
           src={dish.image} 
           alt={dish.name} 
@@ -42,11 +42,11 @@ export const DishCard: React.FC<DishCardProps> = ({ dish }) => {
 
       {/* Content Section */}
       <div className="p-5 flex flex-col flex-1">
-        <div className="flex justify-between items-start mb-2">
-          <h3 className="font-serif text-lg font-semibold text-primary leading-tight line-clamp-2 pr-2">
+        <div className="flex gap-2 justify-between items-start mb-2">
+          <h3 className="flex-1 min-w-0 font-serif text-lg font-semibold text-primary leading-tight line-clamp-2">
             {dish.name}
           </h3>
-          <span className="font-semibold text-accent whitespace-nowrap">
+          <span className="flex-shrink-0 font-semibold text-accent whitespace-nowrap">
             ${dish.price.toFixed(2)}
           </span>
         </div>
@@ -67,7 +67,7 @@ export const DishCard: React.FC<DishCardProps> = ({ dish }) => {
 
           <button 
             onClick={() => addToCart(dish)}
-            className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm active:scale-95"
+            className="flex items-center justify-center min-h-[44px] gap-2 bg-primary text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm active:scale-95"
           >
             <Plus className="w-4 h-4" />
             <span>Craft Plate</span>

@@ -86,8 +86,8 @@ export const useCustomerStore = create<CustomerState>()(
             lastAddedItem: dish
           });
         }
-        // Auto-clear lastAddedItem toast after 3 seconds
-        setTimeout(() => set({ lastAddedItem: null }), 3000);
+        // Auto-clear lastAddedItem toast after 30 seconds
+        setTimeout(() => set({ lastAddedItem: null }), 30000);
       },
       updateQuantity: (id, delta) => {
         const { cart } = get();

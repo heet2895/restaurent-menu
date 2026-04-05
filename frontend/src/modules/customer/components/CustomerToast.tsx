@@ -7,7 +7,7 @@ export const CustomerToast: React.FC = () => {
   const { lastAddedItem, orderStatus } = useCustomerStore();
 
   return (
-    <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 flex flex-col gap-2 pointer-events-none">
+    <div className="fixed bottom-[120px] left-1/2 -translate-x-1/2 md:bottom-auto md:top-6 md:left-auto md:right-6 md:transform-none z-[100] flex flex-col gap-2 pointer-events-none w-[90%] sm:w-auto max-w-sm items-center md:items-end">
       <AnimatePresence>
         {lastAddedItem && (
           <motion.div

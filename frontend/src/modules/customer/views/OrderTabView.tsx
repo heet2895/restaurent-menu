@@ -23,6 +23,10 @@ export const OrderTabView: React.FC = () => {
     setTimeout(() => {
       setOrderStatus('preparing');
     }, 6000);
+
+    setTimeout(() => {
+      setOrderStatus(null);
+    }, 30000);
   };
 
   // Success State View
