@@ -1,0 +1,16 @@
+﻿
+> frontend@0.0.0 build
+> tsc -b && vite build
+
+src/App.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/shared/EmptyState.tsx(2,10): error TS1484: 'LucideIcon' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/components/shared/ErrorBoundary.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+src/components/shared/ErrorBoundary.tsx(1,28): error TS1484: 'ErrorInfo' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/components/shared/ErrorBoundary.tsx(1,39): error TS1484: 'ReactNode' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/layouts/RoleLayout.tsx(3,24): error TS1484: 'Role' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/modules/auth/components/ProtectedRoute.tsx(3,24): error TS1484: 'Role' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/modules/auth/pages/LoginPage.tsx(2,24): error TS1484: 'Role' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/services/api/auth.service.ts(1,1): error TS6133: 'apiClient' is declared but its value is never read.
+src/services/api/auth.service.ts(2,1): error TS6133: 'API_ENDPOINTS' is declared but its value is never read.
+src/services/api/auth.service.ts(3,10): error TS1484: 'Role' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/services/api/auth.service.ts(6,17): error TS6133: 'username' is declared but its value is never read.
