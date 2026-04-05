@@ -9,8 +9,12 @@ export default {
       colors: {
         primary: '#1E293B',
         accent: '#D4AF37',
-        background: '#FDFBF7',
+        background: '#F8F6F2',
       },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+      }
     },
   },
   plugins: [],
